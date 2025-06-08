@@ -15,28 +15,25 @@ func main() {
 
 	for {
 		input, _ := pterm.DefaultInteractiveTextInput.Show("Enter you Guess Number")
+		inpNumber -= 1
 		newInput, _ := strconv.Atoi(input)
 		if inpNumber != 0 {
-			npNumber := trackInput(newInput, gNumber, inpNumber)
-			pterm.Info.Println("You have ", npNumber, " guesses left")
+			trackInput(newInput, gNumber)
+			pterm.Info.Println("You have ", inpNumber, " guesses left")
 		}
 
 	}
 }
 
 // track the user input
-func trackInput(input int, gNumber int, npNumber int) int {
+func trackInput(input int, gNumber int) {
 	if input > gNumber {
 		pterm.Warning.Println("The number is less than the Input")
-		npNumber -= 1
 	} else if input < gNumber {
 		pterm.Warning.Println("The number is greater than the input")
-		npNumber -= 1
 	} else if input == gNumber {
 		pterm.Success.Println("You guess it right")
 	}
-
-	return npNumber
 }
 
 // select random number
