@@ -20,6 +20,9 @@ func main() {
 		if inpNumber != 0 {
 			trackInput(newInput, gNumber)
 			pterm.Info.Println("You have ", inpNumber, " guesses left")
+		} else {
+			pterm.Error.Println("Don't have enough guesses")
+			return
 		}
 
 	}
